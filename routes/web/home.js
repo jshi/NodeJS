@@ -55,6 +55,7 @@ router.post('/signup', function(req, res, next){
     var username = req.body.username;
     var email = req.body.email;
     var password = req.body.password;
+    var repassword = req.body.repassword;
 
     //check if user already exists
     User.findOne({email: email}, function(err, user){
@@ -62,6 +63,11 @@ router.post('/signup', function(req, res, next){
         //user already exists (with specified email)
         if (user) {
             req.flash('error', 'There is already an account with this email');
+            return res.redirect('/signup');
+        }
+
+        if (password != repassword) {
+            req.flash('error', 'Password and Re-Password do not match');
             return res.redirect('/signup');
         }
 
