@@ -24,10 +24,6 @@ router.get('/about', function(req, res){
     res.render('home/about');
 });
 
-router.get('/posts', ensureAuthenticated, function(req, res){
-    res.render('home/posts');
-});
-
 router.get('/login', function(req, res){
     res.render('home/login');
 });

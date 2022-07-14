@@ -10,5 +10,6 @@ router.use(function(req, res, next) {
 });
 
 router.use("/", require("./home"));
+router.use("/post", require("./post"));
 
 module.exports = router;
